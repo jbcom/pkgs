@@ -9,7 +9,7 @@ domain: technical
 
 Unified package repository for every `jbcom/*` project. Ships Homebrew,
 Scoop, and Chocolatey packages from one git tree plus an auto-generated
-Astro static site at <https://jbcom.github.io/pkgs/>.
+Astro static site at <https://jonbogaty.com/pkgs/>.
 
 ## Critical rules
 
@@ -71,7 +71,7 @@ Upstream projects write manifests here on every tagged release:
   commit manifests here.
 
 The Astro site rebuilds automatically on every push to `main`, so
-new packages appear on <https://jbcom.github.io/pkgs/> within minutes
+new packages appear on <https://jonbogaty.com/pkgs/> within minutes
 of the upstream release landing here.
 
 ## What jbcom/pkgs is NOT

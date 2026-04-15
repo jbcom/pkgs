@@ -8,10 +8,11 @@ import { ViteToml } from "vite-plugin-toml";
 import tailwindcss from "@tailwindcss/vite";
 
 // jbcom/pkgs — package index site
-// Served at https://jbcom.github.io/pkgs per Astro's GitHub Pages guide.
+// Served at https://jonbogaty.com/pkgs/ via GitHub Pages custom-domain
+// routing. jbcom.github.io/pkgs/ 301-redirects here automatically.
 
 export default defineConfig({
-  site: "https://jbcom.github.io",
+  site: "https://jonbogaty.com",
   base: "/pkgs",
   integrations: [
     vue(),

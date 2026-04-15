@@ -29,8 +29,6 @@ publish from `jbcom/radioactive-ralph`.
   the seeded manifests
 - A non-Go publishing workflow template for `jbcom/paranoid-passwd`
   and other CMake/C projects (no GoReleaser equivalent)
-- Reverse-proxy setup for `jonbogaty.com/pkgs` → `jbcom.github.io/pkgs`
-  (optional; current deploy works at the GitHub-issued subdomain)
 
 ## Active owners
 
