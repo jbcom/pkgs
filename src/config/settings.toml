@@ -1,0 +1,68 @@
+# available directory themes:
+# spearmint, peppermint, hemingway, brookmint
+theme = 'brookmint'
+
+[general]
+title = "jbcom/pkgs"
+logo = ""
+iconLogo = "tabler:package"
+
+[general.seo]
+name = "jbcom/pkgs"
+description = "Unified Homebrew, Scoop, and Chocolatey index for every jbcom/* project."
+url = "https://jonbogaty.com/pkgs"
+
+[directoryData.source]
+name = "json"          # populated by scripts/generate-directory.mjs
+linksOutbound = true   # package pages link out to the project's docs site
+
+[directoryData.tagPages]
+title = "{0} packages"
+
+[directoryData.search]
+placeholder = "Search {0} packages"
+
+[[directoryData.tags]]
+key = "homebrew"
+name = "Homebrew"
+color = "orange"
+emoji = "🍺"
+description = "Installable via `brew install` on macOS, Linux, and WSL2+Linuxbrew."
+
+[[directoryData.tags]]
+key = "scoop"
+name = "Scoop"
+color = "blue"
+emoji = "🪣"
+description = "Installable via `scoop install` on Windows."
+
+[[directoryData.tags]]
+key = "chocolatey"
+name = "Chocolatey"
+color = "green"
+emoji = "🍫"
+description = "Installable via `choco install` on Windows."
+
+[header.banner]
+show = false
+text = ""
+link = "https://github.com/jbcom/pkgs"
+brandText = ""
+
+[header.navbar]
+colorModeSelector = true
+
+[[header.navbar.links]]
+name = "GitHub"
+href = "https://github.com/jbcom/pkgs"
+target = "_blank"
+
+[header.actionButton]
+text = "Submit a project"
+href = "https://github.com/jbcom/pkgs/issues/new"
+
+[footer]
+description = "Unified package index for every jbcom/* project."
+
+[footer.socials.github]
+link = "https://github.com/jbcom"

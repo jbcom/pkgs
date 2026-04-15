@@ -1,0 +1,20 @@
+[
+  {
+    "id": "radioactive-ralph",
+    "title": "radioactive-ralph",
+    "description": "Autonomous continuous development orchestrator for Claude Code",
+    "tags": [
+      "chocolatey",
+      "homebrew",
+      "scoop"
+    ],
+    "link": "https://jonbogaty.com/radioactive-ralph/",
+    "featured": false,
+    "packagers": {
+      "homebrew": "0.6.0",
+      "scoop": "0.6.0",
+      "chocolatey": "0.6.0"
+    },
+    "license": "MIT"
+  }
+]

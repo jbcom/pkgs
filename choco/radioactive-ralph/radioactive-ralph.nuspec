@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>radioactive-ralph</id>
+    <version>0.6.0</version>
+    <title>Radioactive Ralph</title>
+    <authors>Jon B</authors>
+    <owners>jbcom</owners>
+    <projectUrl>https://github.com/jbcom/radioactive-ralph</projectUrl>
+    <licenseUrl>https://github.com/jbcom/radioactive-ralph/blob/main/LICENSE</licenseUrl>
+    <projectSourceUrl>https://github.com/jbcom/radioactive-ralph</projectSourceUrl>
+    <packageSourceUrl>https://github.com/jbcom/pkgs</packageSourceUrl>
+    <docsUrl>https://github.com/jbcom/radioactive-ralph#readme</docsUrl>
+    <bugTrackerUrl>https://github.com/jbcom/radioactive-ralph/issues</bugTrackerUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Autonomous continuous development orchestrator for Claude Code</summary>
+    <description>
+Radioactive Ralph is a per-repo meta-orchestrator that keeps a fleet of
+Claude subprocesses alive, focused, and productive across days of
+autonomous development work.
+    </description>
+    <tags>claude ai orchestrator automation cli</tags>
+    <releaseNotes>https://github.com/jbcom/radioactive-ralph/releases/tag/v0.6.0</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools/**" target="tools" />
+  </files>
+</package>

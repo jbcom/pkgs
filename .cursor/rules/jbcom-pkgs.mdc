@@ -1,0 +1,19 @@
+---
+description: jbcom/pkgs agent instructions
+globs:
+alwaysApply: true
+---
+
+See [CLAUDE.md](mdc:CLAUDE.md) for the agent entry point and critical
+rules. See [AGENTS.md](mdc:AGENTS.md) for extended operating protocols
+and the publishing architecture. See [STANDARDS.md](mdc:STANDARDS.md)
+for non-negotiable code + content standards.
+
+## TL;DR for Cursor
+
+- Never hand-edit `Formula/*.rb`, `bucket/*.json`, `choco/**/*.nuspec`
+- Node 24 LTS + pnpm 10 only
+- All GitHub Actions pinned to full commit SHA with tagged comment
+- Conventional Commits; release-please handles releases
+- Max 300 LOC per source file
+- Dark mode + light mode both tested
