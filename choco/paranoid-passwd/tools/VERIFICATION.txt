@@ -1,0 +1,16 @@
+VERIFICATION
+
+paranoid-passwd 3.5.2 for Windows amd64 ships as a ZIP archive at:
+  https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.5.2/paranoid-passwd-3.5.2-windows-amd64.zip
+
+Checksum (SHA-256): 44940bd8a88801e07b21dfa30588ea36937e45fc40bf6c48c5271e84784c54a7
+
+Verify locally on Windows:
+
+  Get-FileHash paranoid-passwd-3.5.2-windows-amd64.zip -Algorithm SHA256
+
+Also verify sigstore build provenance:
+
+  gh attestation verify paranoid-passwd-3.5.2-windows-amd64.zip --owner jbcom
+
+Source: https://github.com/jbcom/paranoid-passwd

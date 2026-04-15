@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>paranoid-passwd</id>
+    <version>3.5.2</version>
+    <title>Paranoid Password Generator</title>
+    <authors>Jon B</authors>
+    <owners>jbcom</owners>
+    <projectUrl>https://github.com/jbcom/paranoid-passwd</projectUrl>
+    <licenseUrl>https://github.com/jbcom/paranoid-passwd/blob/main/LICENSE</licenseUrl>
+    <projectSourceUrl>https://github.com/jbcom/paranoid-passwd</projectSourceUrl>
+    <packageSourceUrl>https://github.com/jbcom/pkgs</packageSourceUrl>
+    <docsUrl>https://github.com/jbcom/paranoid-passwd#readme</docsUrl>
+    <bugTrackerUrl>https://github.com/jbcom/paranoid-passwd/issues</bugTrackerUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Self-auditing cryptographic password generator</summary>
+    <description>
+Paranoid-passwd generates passwords using a C+WASM core that audits
+itself on every run: chi-squared uniformity, serial correlation,
+collision detection, entropy proof, NIST compliance, and weak-pattern
+detection — all before emitting output.
+    </description>
+    <tags>password security cli crypto paranoid</tags>
+    <releaseNotes>https://github.com/jbcom/paranoid-passwd/releases/tag/paranoid-passwd-v3.5.2</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools/**" target="tools" />
+  </files>
+</package>
