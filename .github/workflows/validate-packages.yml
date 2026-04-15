@@ -1,0 +1,71 @@
+name: Validate packages
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate Homebrew formulas (Ruby syntax)
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(Formula/*.rb)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No Homebrew formulas found"
+            exit 0
+          fi
+          for f in "${files[@]}"; do
+            ruby -c "$f"
+          done
+
+      - name: Validate Scoop manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import glob
+          import json
+
+          required = {"version", "description", "homepage", "license", "url", "hash"}
+          files = glob.glob("bucket/*.json")
+          if not files:
+              print("No Scoop manifests found")
+              raise SystemExit(0)
+
+          for path in files:
+              with open(path, "r", encoding="utf-8") as f:
+                  data = json.load(f)
+              missing = required - set(data)
+              if missing:
+                  raise SystemExit(f"{path}: missing required keys: {', '.join(sorted(missing))}")
+          print(f"Validated {len(files)} Scoop manifest(s)")
+          PY
+
+      - name: Validate Chocolatey nuspec XML
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import glob
+          import xml.etree.ElementTree as ET
+
+          files = glob.glob("choco/**/*.nuspec", recursive=True)
+          if not files:
+              print("No Chocolatey nuspec files found")
+              raise SystemExit(0)
+
+          for path in files:
+              ET.parse(path)
+          print(f"Validated {len(files)} nuspec file(s)")
+          PY
