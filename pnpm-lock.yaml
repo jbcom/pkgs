@@ -43,7 +43,7 @@ importers:
         version: 2.2.5
       '@nanostores/vue':
         specifier: ^0.11.0
-        version: 0.11.0(nanostores@0.11.4)(vue@3.5.32(typescript@5.9.3))
+        version: 0.11.0(nanostores@1.2.0)(vue@3.5.32(typescript@5.9.3))
       '@rgrove/parse-xml':
         specifier: ^4.2.0
         version: 4.2.0
@@ -63,8 +63,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.6
       nanostores:
-        specifier: ^0.11.3
-        version: 0.11.4
+        specifier: ^1.2.0
+        version: 1.2.0
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -2461,9 +2461,9 @@ packages:
     engines: {node: ^18 || >=20}
     hasBin: true
 
-  nanostores@0.11.4:
-    resolution: {integrity: sha512-k1oiVNN4hDK8NcNERSZLQiMfRzEGtfnvZvdBvey3SQbgn8Dcrk0h1I6vpxApjb10PFUflZrgJ2WEZyJQ+5v7YQ==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  nanostores@1.2.0:
+    resolution: {integrity: sha512-F0wCzbsH80G7XXo0Jd9/AVQC7ouWY6idUCTnMwW5t/Rv9W8qmO6endavDwg7TNp5GbugwSukFMVZqzPSrSMndg==}
+    engines: {node: ^20.0.0 || >=22.0.0}
 
   neotraverse@0.6.18:
     resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
@@ -4162,9 +4162,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nanostores/vue@0.11.0(nanostores@0.11.4)(vue@3.5.32(typescript@5.9.3))':
+  '@nanostores/vue@0.11.0(nanostores@1.2.0)(vue@3.5.32(typescript@5.9.3))':
     dependencies:
-      nanostores: 0.11.4
+      nanostores: 1.2.0
       vue: 3.5.32(typescript@5.9.3)
 
   '@oslojs/encoding@1.1.0': {}
@@ -6043,7 +6043,7 @@ snapshots:
 
   nanoid@5.1.7: {}
 
-  nanostores@0.11.4: {}
+  nanostores@1.2.0: {}
 
   neotraverse@0.6.18: {}
 
