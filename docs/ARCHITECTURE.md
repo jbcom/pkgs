@@ -82,17 +82,21 @@ tap git tree directly.
 - **Deployed** via `withastro/action@v6` (auto-detects pnpm) to GitHub
   Pages with base path `/pkgs`
 
-## Why not subpath under custom domain (jonbogaty.com/pkgs)?
+## Site serves at jonbogaty.com/pkgs/
 
-Astro's official GitHub Pages guide only supports either:
+The operator's apex domain `jonbogaty.com` already CNAMEs to
+`jbcom.github.io`, so GitHub Pages transparently serves `/pkgs/` at
+`https://jonbogaty.com/pkgs/`. `jbcom.github.io/pkgs/` 301-redirects
+to the canonical URL.
 
-- Project page (`jbcom.github.io/pkgs`) with `base: '/pkgs'`
-- Custom domain with `site: 'https://custom.tld'` and **no base**
+Astro's `astro.config.mjs` uses `site: 'https://jonbogaty.com'` +
+`base: '/pkgs'` — this feeds correct absolute URLs into sitemap and OG
+metadata while internal routing stays subpath-relative.
 
-Serving `jonbogaty.com/pkgs` requires an external reverse proxy
-(Cloudflare Worker, Netlify rewrite, Caddy) that maps that path to
-`jbcom.github.io/pkgs/`. That's a future-operator decision; the repo
-itself is deployed at `jbcom.github.io/pkgs` today.
+No CNAME file is needed in `public/` because the apex-domain CNAME is
+configured repo-wide (pages settings), not per-repo via file. Adding a
+`public/CNAME` would *break* the `/pkgs` base path by treating the
+repo as apex-mode.
 
 ## Dependencies
 

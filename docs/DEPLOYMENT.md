@@ -11,7 +11,7 @@ domain: ops
 
 | Env | URL | Trigger |
 |-----|-----|---------|
-| Production | <https://jbcom.github.io/pkgs/> | Push to `main` |
+| Production | <https://jonbogaty.com/pkgs/> | Push to `main` |
 | Preview | Local (`pnpm dev`) | `localhost:4321/pkgs/` |
 
 There is no staging environment. Previews happen locally.
@@ -53,20 +53,23 @@ Or:
 
 - GitHub Pages build status: <https://github.com/jbcom/pkgs/deployments>
 - Workflow runs: <https://github.com/jbcom/pkgs/actions>
-- Site health: manual check at <https://jbcom.github.io/pkgs/>
+- Site health: manual check at <https://jonbogaty.com/pkgs/>
 
 No uptime SLA. If the site is down for more than an hour during a
 release window, escalate via the upstream project's issue tracker.
 
 ## DNS / custom domain
 
-Currently served on the GitHub-issued subdomain
-(`jbcom.github.io/pkgs`). To serve `jonbogaty.com/pkgs` in the future:
+The operator's apex `jonbogaty.com` already CNAMEs to
+`jbcom.github.io`. GitHub Pages transparently serves every `jbcom/*`
+repo's pages subpath at the matching URL on the apex, so this repo
+is live at `https://jonbogaty.com/pkgs/` with no additional config.
 
-1. Configure Cloudflare (or equivalent CDN) to proxy
-   `jonbogaty.com/pkgs/*` → `jbcom.github.io/pkgs/*`
-2. Do NOT add a `public/CNAME` file — per Astro docs, that converts
-   the site to apex-domain mode and breaks the `/pkgs` base path
+`jbcom.github.io/pkgs/` 301-redirects to the apex, so operators
+following the GitHub URL end up in the right place.
+
+Do NOT add a `public/CNAME` file. That converts this repo to
+apex-domain mode and would break the `/pkgs` base path.
 
 ## Broken-build triage
 

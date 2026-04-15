@@ -2,7 +2,7 @@
 
 Unified package repository for every `jbcom/*` project — Homebrew,
 Scoop, and Chocolatey from one git tree. Public package index at
-<https://jbcom.github.io/pkgs/>.
+<https://jonbogaty.com/pkgs/>.
 
 ## Install
 
@@ -142,7 +142,7 @@ PY
 
 `deploy.yml` runs on every push to `main` using `withastro/action@v6`.
 The built site is deployed to GitHub Pages at
-<https://jbcom.github.io/pkgs/>.
+<https://jonbogaty.com/pkgs/>.
 
 ## License
 
