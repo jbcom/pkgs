@@ -22,7 +22,8 @@ jobs:
       - uses: withastro/action@44706356b4eb735f8b9035699eb4796241a040c4 # v6.1.0
         with:
           node-version: "24"
-          package-manager: pnpm@latest
+          # Package manager is auto-detected from pnpm-lock.yaml +
+          # packageManager field in package.json.
 
   deploy:
     needs: build
