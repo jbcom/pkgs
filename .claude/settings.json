@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(pnpm *:*)",
+      "Bash(pnpm *)",
+      "Bash(node *:*)",
+      "Bash(node *)",
+      "Bash(astro *:*)",
+      "Bash(gh pr *:*)",
+      "Bash(gh api *:*)",
+      "Bash(ruby -c *)"
+    ]
+  }
+}

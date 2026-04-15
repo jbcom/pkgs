@@ -1,0 +1,59 @@
+{
+  "name": "@jbcom/pkgs-site",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Unified package index for Homebrew, Scoop, Chocolatey — every jbcom/* project, one tap.",
+  "scripts": {
+    "predev": "node scripts/generate-directory.mjs",
+    "dev": "astro dev",
+    "prebuild": "node scripts/generate-directory.mjs",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-directory": "node scripts/generate-directory.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.2.0",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/vue": "^5.0.7",
+    "@fontsource-variable/dm-sans": "^5.2.5",
+    "@fontsource-variable/eb-garamond": "^5.2.5",
+    "@fontsource-variable/gabarito": "^5.2.5",
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource/gabarito": "^5.1.0",
+    "@headlessui/vue": "^1.7.23",
+    "@iarna/toml": "^2.2.5",
+    "@nanostores/vue": "^0.11.0",
+    "@rgrove/parse-xml": "^4.2.0",
+    "@tailwindcss/vite": "^4.0.14",
+    "@types/node": "^24.0.0",
+    "@vercel/og": "^0.6.5",
+    "astro": "^5.5.2",
+    "astro-color-scheme": "^1.1.5",
+    "nanostores": "^0.11.3",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^4.0.14",
+    "typescript": "^5.6.2",
+    "vue": "^3.5.11",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@iconify-json/tabler": "^1.2.5",
+    "@tailwindcss/typography": "^0.5.15",
+    "astro-icon": "^1.1.1",
+    "vite-plugin-toml": "^0.7.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-darwin-arm64": "^4.60.1",
+    "@rollup/rollup-darwin-x64": "^4.60.1",
+    "@rollup/rollup-linux-arm64-gnu": "^4.60.1",
+    "@rollup/rollup-linux-x64-gnu": "^4.60.1",
+    "@rollup/rollup-win32-x64-msvc": "^4.60.1"
+  },
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=10"
+  },
+  "packageManager": "pnpm@10.33.0"
+}

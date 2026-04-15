@@ -1,10 +1,8 @@
 # jbcom/pkgs
 
-Unified package repository for every `jbcom/*` project. Ships Homebrew,
-Scoop, and Chocolatey packages from a single git tree. Publishing is
-automated — maintainers of individual projects don't edit this repo by
-hand; their project's GoReleaser (or equivalent) writes package
-manifests here on every release.
+Unified package repository for every `jbcom/*` project — Homebrew,
+Scoop, and Chocolatey from one git tree. Public package index at
+<https://jbcom.github.io/pkgs/>.
 
 ## Install
 
@@ -17,7 +15,7 @@ brew tap jbcom/tap
 brew install <package>
 ```
 
-`brew tap jbcom/tap` shorthand resolves to `github.com/jbcom/homebrew-tap`,
+The `jbcom/tap` shorthand resolves to `github.com/jbcom/homebrew-tap`,
 a GoReleaser-managed mirror of this repo's `Formula/` directory. Both
 locations stay in sync on every release.
 
@@ -34,47 +32,83 @@ scoop install <package>
 choco install <package>
 ```
 
-Packages are published to the Chocolatey community feed directly by
-GoReleaser; the `choco/` directory here holds the package sources for
-reproducibility and manual audit.
+Chocolatey packages are published to the community feed directly on
+release; the `choco/` directory here holds the package sources for
+reproducibility.
 
 ## Repository layout
 
 ```text
 .
-├── Formula/           # Homebrew formulae (*.rb)
-├── bucket/            # Scoop manifests (*.json)
-├── choco/             # Chocolatey package sources (*.nuspec, tools/)
-├── index.html         # GitHub Pages landing page
+├── Formula/                  # Homebrew formulas (*.rb) — written by release CI
+├── bucket/                   # Scoop manifests (*.json) — written by release CI
+├── choco/                    # Chocolatey package sources (*.nuspec, tools/)
+├── src/                      # Astro site source
+│   ├── content.config.ts     # Content collection wiring
+│   ├── data/
+│   │   ├── directory/        # Auto-generated: directory.json
+│   │   │                     # Run `pnpm generate-directory` to rebuild
+│   │   └── pages/            # Hand-written MDX (landing + static pages)
+│   ├── config/settings.toml  # Site title, nav, tag colors, theme
+│   ├── components/           # UI components (cards, search, grid)
+│   ├── layouts/              # Page layouts
+│   ├── pages/                # Astro routes
+│   └── styles/               # Global Tailwind theme overrides
+├── scripts/
+│   └── generate-directory.mjs   # Scans Formula/ bucket/ choco/ → JSON
+├── astro.config.mjs
+├── package.json              # pnpm + node 24
 └── .github/workflows/
-    └── validate-packages.yml   # CI: syntax + schema checks
+    ├── validate-packages.yml # Validates Formula / bucket / choco on PR
+    └── deploy.yml            # Deploys site to GitHub Pages on push to main
 ```
 
 ## How releases land here
 
-Individual project repos use GoReleaser (or equivalent) to publish into
-this repo on every tagged release. For example, `radioactive-ralph`'s
-`.goreleaser.yaml` writes to `Formula/radioactive-ralph.rb`,
-`bucket/radioactive-ralph.json`, and the Chocolatey community feed as
-part of its release pipeline.
+Each upstream project's release pipeline publishes into this repo:
 
-Direct edits to `Formula/`, `bucket/`, or `choco/` are rare. When they
+- **Go projects** (e.g., `radioactive-ralph`) use GoReleaser. The
+  `brews:`, `scoops:`, and `chocolateys:` blocks in their
+  `.goreleaser.yaml` write to `jbcom/pkgs` directly. See
+  [the radioactive-ralph config](https://github.com/jbcom/radioactive-ralph/blob/main/.goreleaser.yaml)
+  for a reference implementation.
+
+- **Non-Go projects** (e.g., `paranoid-passwd`) use a dedicated
+  publishing workflow in their own repo that commits manifests here
+  via `gh` CLI on every tagged release.
+
+Direct edits to `Formula/`, `bucket/`, or `choco/` are rare; when they
 happen, CI validates them on every PR.
+
+## Local development
+
+Requires Node 24 LTS (Homebrew: `brew install node@24 && brew link node@24`)
+and pnpm 10 (`brew install pnpm`).
+
+```bash
+pnpm install
+pnpm dev       # live-reload at http://localhost:4321/pkgs/
+pnpm build     # static build in dist/
+pnpm preview   # serve the built site
+```
+
+`pnpm generate-directory` rebuilds `src/data/directory/directory.json`
+from the current `Formula/`, `bucket/`, and `choco/` content. Runs
+automatically on `predev` and `prebuild`.
 
 ## Publishing standards
 
-- Package definitions live in-repo and are reviewable by pull request.
-- Every PR runs CI validation (`.github/workflows/validate-packages.yml`).
-- Versions are semantic. Architecture metadata is explicit wherever the
-  packager supports it.
-- Download URLs and checksums are pinned to the release artifacts on
-  the upstream project's GitHub release.
+- Package definitions live in-repo and are reviewable by pull request
+- Every PR runs CI validation (`.github/workflows/validate-packages.yml`)
+- Versions are semantic
+- Download URLs and checksums are pinned to GitHub release artifacts
+- Architecture metadata is explicit wherever the packager supports it
 
 ## Validation
 
-CI checks:
+CI runs three checks on every PR:
 
-- **Homebrew** — Ruby syntax check (`ruby -c`) on every `Formula/*.rb`
+- **Homebrew** — Ruby syntax (`ruby -c`) on every `Formula/*.rb`
 - **Scoop** — JSON parse + required keys (`version`, `description`,
   `homepage`, `license`, `url`, `hash`) on every `bucket/*.json`
 - **Chocolatey** — XML parse on every `choco/**/*.nuspec`
@@ -104,11 +138,11 @@ print('nuspec files ok')
 PY
 ```
 
-## GitHub Pages
+## Deployment
 
-`index.html` at the repo root is served via GitHub Pages. The page
-lists the packages currently published in this repo and links to each
-project's canonical home.
+`deploy.yml` runs on every push to `main` using `withastro/action@v6`.
+The built site is deployed to GitHub Pages at
+<https://jbcom.github.io/pkgs/>.
 
 ## License
 

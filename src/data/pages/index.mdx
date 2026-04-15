@@ -1,0 +1,35 @@
+---
+title: "jbcom/pkgs"
+description: "Unified Homebrew, Scoop, and Chocolatey index for every jbcom/* project."
+---
+import Grid from '@/components/directory/Grid.astro'
+import Search from '@/components/directory/Search.astro'
+
+# jbcom/pkgs
+
+One tap. Every platform. Every `jbcom/*` project.
+
+## Tap this repo
+
+**Homebrew** (macOS, Linux, WSL2+Linuxbrew)
+```bash
+brew tap jbcom/tap
+brew install <package>
+```
+
+**Scoop** (Windows)
+```powershell
+scoop bucket add jbcom https://github.com/jbcom/pkgs
+scoop install <package>
+```
+
+**Chocolatey** (Windows — no tap needed)
+```powershell
+choco install <package>
+```
+
+## Packages
+
+<Search />
+
+<Grid />
