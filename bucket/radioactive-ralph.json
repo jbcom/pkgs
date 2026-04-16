@@ -1,12 +1,12 @@
 {
-    "version": "0.8.1",
+    "version": "0.8.2",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.1/radioactive_ralph_0.8.1_windows_amd64.zip",
+            "url": "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.2/radioactive_ralph_0.8.2_windows_amd64.zip",
             "bin": [
                 "radioactive_ralph.exe"
             ],
-            "hash": "5f71a72ce9fe913f163eb8f0f8970f7a70b41fbb8eed4a9c80e7bcc71d90f9c2"
+            "hash": "25b629c2f384da7c2b6fc7ef81018fe557d81485920b3c532e69e57daa378375"
         }
     },
     "homepage": "https://github.com/jbcom/radioactive-ralph",
