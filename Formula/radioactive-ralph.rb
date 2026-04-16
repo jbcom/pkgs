@@ -5,21 +5,21 @@
 class RadioactiveRalph < Formula
   desc "Binary-first repo runtime with many Ralph personalities"
   homepage "https://github.com/jbcom/radioactive-ralph"
-  version "0.8.1"
+  version "0.8.2"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.1/radioactive_ralph_0.8.1_darwin_amd64.tar.gz"
-      sha256 "ba400436d17777c3a69103f04f47f81f0b96b23eec5210354ae94dad041e2624"
+      url "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.2/radioactive_ralph_0.8.2_darwin_amd64.tar.gz"
+      sha256 "e03480e26b2fdb9a585f2509fb9d33e97021c5d8ca2ab8240cedf965e3551931"
 
       define_method(:install) do
         bin.install "radioactive_ralph"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.1/radioactive_ralph_0.8.1_darwin_arm64.tar.gz"
-      sha256 "a61bc1d7d7f58d7d8f2e5bc7c26b367d9352527b07b6bdd1724ab823904d09f2"
+      url "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.2/radioactive_ralph_0.8.2_darwin_arm64.tar.gz"
+      sha256 "5f9f417e9b1ff3992d8841f7f6986cf0a577bba96314893e0bed96217a59ecee"
 
       define_method(:install) do
         bin.install "radioactive_ralph"
@@ -29,15 +29,15 @@ class RadioactiveRalph < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.1/radioactive_ralph_0.8.1_linux_amd64.tar.gz"
-      sha256 "c6410ccdf5c445ed4eb6edd3985ca35a7c5256e40f5e2f32124efbad6ad41c42"
+      url "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.2/radioactive_ralph_0.8.2_linux_amd64.tar.gz"
+      sha256 "ac1f6a1ea675dd0fa13ca1ebe2af486ee070da0310f4b1fb9294ca67a719d392"
       define_method(:install) do
         bin.install "radioactive_ralph"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.1/radioactive_ralph_0.8.1_linux_arm64.tar.gz"
-      sha256 "5e293196eb6291cf5a06f7bca49a2e9a91fb63059fde434b263b5e71e0d47686"
+      url "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.2/radioactive_ralph_0.8.2_linux_arm64.tar.gz"
+      sha256 "296300284022a06a9624f94cc7ccb58aaa98c653230aa3d740ee2ec8ab873685"
       define_method(:install) do
         bin.install "radioactive_ralph"
       end
