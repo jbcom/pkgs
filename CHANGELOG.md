@@ -12,6 +12,24 @@ All notable changes to `jbcom/pkgs` are documented in this file.
 The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0](https://github.com/jbcom/pkgs/compare/pkgs-site-v0.1.0...pkgs-site-v0.2.0) (2026-04-16)
+
+
+### Features
+
+* establish jbcom/pkgs foundation ([#1](https://github.com/jbcom/pkgs/issues/1)) ([5e60871](https://github.com/jbcom/pkgs/commit/5e6087117fc1ee19545f62e064072b8e1a0d4831))
+* **paranoid-passwd:** bump to 3.5.2 ([#9](https://github.com/jbcom/pkgs/issues/9)) ([dff3103](https://github.com/jbcom/pkgs/commit/dff310349000f4eff04dd6861eda78d02ea74353))
+
+
+### Bug Fixes
+
+* **ci:** accept multi-arch Scoop manifests in validator ([#11](https://github.com/jbcom/pkgs/issues/11)) ([287dc53](https://github.com/jbcom/pkgs/commit/287dc531df808230c976759164f95991d3ab2544))
+
+
+### Documentation
+
+* canonical URL is https://jonbogaty.com/pkgs/ ([#7](https://github.com/jbcom/pkgs/issues/7)) ([1a16fe1](https://github.com/jbcom/pkgs/commit/1a16fe1985cb8ac2b2ac8834d549718217333d47))
+
 ## [Unreleased]
 
 ### Added
