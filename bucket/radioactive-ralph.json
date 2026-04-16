@@ -1,25 +1,22 @@
 {
-  "version": "0.6.0",
-  "description": "Autonomous continuous development orchestrator for Claude Code",
-  "homepage": "https://github.com/jbcom/radioactive-ralph",
-  "license": "MIT",
-  "url": "https://github.com/jbcom/radioactive-ralph/releases/download/v0.6.0/radioactive_ralph_0.6.0_windows_amd64.zip",
-  "hash": "0000000000000000000000000000000000000000000000000000000000000000",
-  "bin": "radioactive_ralph.exe",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/jbcom/radioactive-ralph/releases/download/v0.6.0/radioactive_ralph_0.6.0_windows_amd64.zip",
-      "hash": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-  },
-  "checkver": {
-    "github": "https://github.com/jbcom/radioactive-ralph"
-  },
-  "autoupdate": {
+    "version": "0.8.1",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/jbcom/radioactive-ralph/releases/download/v$version/radioactive_ralph_$version_windows_amd64.zip"
-      }
-    }
-  }
+        "64bit": {
+            "url": "https://github.com/jbcom/radioactive-ralph/releases/download/v0.8.1/radioactive_ralph_0.8.1_windows_amd64.zip",
+            "bin": [
+                "radioactive_ralph.exe"
+            ],
+            "hash": "5f71a72ce9fe913f163eb8f0f8970f7a70b41fbb8eed4a9c80e7bcc71d90f9c2"
+        }
+    },
+    "homepage": "https://github.com/jbcom/radioactive-ralph",
+    "license": "MIT",
+    "description": "Binary-first repo runtime with many Ralph personalities",
+    "post_install": [
+        "Write-Host 'Next step — initialize a repo and let Fixit seed the first plan:'",
+        "Write-Host '  radioactive_ralph init'",
+        "Write-Host '  radioactive_ralph run --variant fixit --advise --topic bootstrap'",
+        "Write-Host '  radioactive_ralph service start'",
+        "Write-Host 'See https://jonbogaty.com/radioactive-ralph/getting-started/ for the full setup flow.'"
+    ]
 }
