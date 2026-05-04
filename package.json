@@ -27,7 +27,7 @@
     "@nanostores/vue": "^0.11.0",
     "@rgrove/parse-xml": "^4.2.0",
     "@tailwindcss/vite": "^4.2.4",
-    "@types/node": "^24.0.0",
+    "@types/node": "^25.6.0",
     "@vercel/og": "^0.11.1",
     "astro": "^5.5.2",
     "astro-color-scheme": "^1.1.5",
