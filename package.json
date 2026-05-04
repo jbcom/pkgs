@@ -13,7 +13,7 @@
     "generate-directory": "node scripts/generate-directory.mjs"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.9",
     "@astrojs/mdx": "^4.2.0",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/vue": "^5.0.7",
@@ -26,7 +26,7 @@
     "@iarna/toml": "^2.2.5",
     "@nanostores/vue": "^0.11.0",
     "@rgrove/parse-xml": "^4.2.0",
-    "@tailwindcss/vite": "^4.0.14",
+    "@tailwindcss/vite": "^4.2.4",
     "@types/node": "^24.0.0",
     "@vercel/og": "^0.11.1",
     "astro": "^5.5.2",
