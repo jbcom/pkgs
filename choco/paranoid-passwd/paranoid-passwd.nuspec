@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>paranoid-passwd</id>
-    <version>3.5.2</version>
-    <title>Paranoid Password Generator</title>
+    <version>3.6.5</version>
+    <title>Paranoid Passwd</title>
     <authors>Jon B</authors>
     <owners>jbcom</owners>
     <projectUrl>https://github.com/jbcom/paranoid-passwd</projectUrl>
@@ -13,15 +13,15 @@
     <docsUrl>https://github.com/jbcom/paranoid-passwd#readme</docsUrl>
     <bugTrackerUrl>https://github.com/jbcom/paranoid-passwd/issues</bugTrackerUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>Self-auditing cryptographic password generator</summary>
+    <summary>Local-first password manager and generator with CLI and TUI</summary>
     <description>
-Paranoid-passwd generates passwords using a C+WASM core that audits
-itself on every run: chi-squared uniformity, serial correlation,
-collision detection, entropy proof, NIST compliance, and weak-pattern
-detection — all before emitting output.
+Paranoid Passwd keeps secrets local while making trust verifiable. It
+ships a Rust-native password generator, encrypted local vault, terminal
+TUI, scriptable CLI, and release artifacts with checksums and
+attestations.
     </description>
-    <tags>password security cli crypto paranoid</tags>
-    <releaseNotes>https://github.com/jbcom/paranoid-passwd/releases/tag/paranoid-passwd-v3.5.2</releaseNotes>
+    <tags>password security cli tui rust paranoid</tags>
+    <releaseNotes>https://github.com/jbcom/paranoid-passwd/releases/tag/paranoid-passwd-v3.6.5</releaseNotes>
   </metadata>
   <files>
     <file src="tools/**" target="tools" />
