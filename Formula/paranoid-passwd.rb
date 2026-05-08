@@ -6,28 +6,28 @@
 class ParanoidPasswd < Formula
   desc "Local-first password manager and generator with CLI and TUI"
   homepage "https://github.com/jbcom/paranoid-passwd"
-  version "3.6.5"
+  version "3.7.0"
   license "GPL-3.0-only"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.6.5/paranoid-passwd-3.6.5-darwin-arm64.tar.gz"
-      sha256 "6d31f82ef205a6a59be1003768bbcf73953c1a63406282416538ea4da017a522"
+      url "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.7.0/paranoid-passwd-3.7.0-darwin-arm64.tar.gz"
+      sha256 "cf0a59c1538c0acd08814424c31fa259383d0f6cfc51fc6d897559859d7b576c"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.6.5/paranoid-passwd-3.6.5-darwin-amd64.tar.gz"
-      sha256 "97e18ccf54d3d7fa645e3942181bdea1de2d5911c9c63bdd9d29aaab96121498"
+      url "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.7.0/paranoid-passwd-3.7.0-darwin-amd64.tar.gz"
+      sha256 "f542f119507ec1acb2b8b5765dc299c5520c2579297a5216ed73208f2ed5e2d2"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.6.5/paranoid-passwd-3.6.5-linux-arm64.tar.gz"
-      sha256 "dca563f1c336e2613fe0f65d073e856dbf7d748a312a421f4bc192d6f84b9ea4"
+      url "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.7.0/paranoid-passwd-3.7.0-linux-arm64.tar.gz"
+      sha256 "867915fd82bfa60ebbebc20687800efa846870aa3b2c5abb4e36a58ee6d0192c"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.6.5/paranoid-passwd-3.6.5-linux-amd64.tar.gz"
-      sha256 "cd232e5d4076ae67a575ce7c777abf2733abc477f7642e66894740f246d84cd9"
+      url "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.7.0/paranoid-passwd-3.7.0-linux-amd64.tar.gz"
+      sha256 "849ac961091dd3140e2024e9b12fad4ab3228ba7bb8b9841cac4b3e0c199ddf2"
     end
   end
 
