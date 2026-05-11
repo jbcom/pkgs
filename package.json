@@ -24,7 +24,7 @@
     "@fontsource/gabarito": "^5.1.0",
     "@headlessui/vue": "^1.7.23",
     "@iarna/toml": "^2.2.5",
-    "@nanostores/vue": "^0.11.0",
+    "@nanostores/vue": "^1.1.0",
     "@rgrove/parse-xml": "^4.2.0",
     "@tailwindcss/vite": "^4.2.4",
     "@types/node": "^24.0.0",
