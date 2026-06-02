@@ -78,8 +78,8 @@ importers:
         specifier: ^3.5.35
         version: 3.5.35(typescript@5.9.3)
       zod:
-        specifier: ^3.24.2
-        version: 3.25.76
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       '@iconify-json/tabler':
         specifier: ^1.2.35
