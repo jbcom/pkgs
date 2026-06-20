@@ -1,15 +1,15 @@
 {
-  "version": "3.6.5",
+  "version": "3.7.0",
   "description": "Local-first password manager and generator with CLI and TUI",
   "homepage": "https://github.com/jbcom/paranoid-passwd",
   "license": "GPL-3.0-only",
-  "url": "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.6.5/paranoid-passwd-3.6.5-windows-amd64.zip",
-  "hash": "a585b2660d0e09b9edb4a8de27a3021b663b49e9e0717b90f56996d9df3b4d0d",
+  "url": "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.7.0/paranoid-passwd-3.7.0-windows-amd64.zip",
+  "hash": "fae9ae7906ab4b6e33c03c5cb93686f9d1b3a673e9085e3274ea296ac80d2298",
   "bin": "paranoid-passwd.exe",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.6.5/paranoid-passwd-3.6.5-windows-amd64.zip",
-      "hash": "a585b2660d0e09b9edb4a8de27a3021b663b49e9e0717b90f56996d9df3b4d0d"
+      "url": "https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.7.0/paranoid-passwd-3.7.0-windows-amd64.zip",
+      "hash": "fae9ae7906ab4b6e33c03c5cb93686f9d1b3a673e9085e3274ea296ac80d2298"
     }
   },
   "checkver": {
