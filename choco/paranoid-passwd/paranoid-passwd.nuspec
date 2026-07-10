@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>paranoid-passwd</id>
-    <version>3.6.5</version>
+    <version>3.7.0</version>
     <title>Paranoid Passwd</title>
     <authors>Jon B</authors>
     <owners>jbcom</owners>
@@ -21,7 +21,7 @@ TUI, scriptable CLI, and release artifacts with checksums and
 attestations.
     </description>
     <tags>password security cli tui rust paranoid</tags>
-    <releaseNotes>https://github.com/jbcom/paranoid-passwd/releases/tag/paranoid-passwd-v3.6.5</releaseNotes>
+    <releaseNotes>https://github.com/jbcom/paranoid-passwd/releases/tag/paranoid-passwd-v3.7.0</releaseNotes>
   </metadata>
   <files>
     <file src="tools/**" target="tools" />
