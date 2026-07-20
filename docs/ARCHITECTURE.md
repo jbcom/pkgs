@@ -19,8 +19,8 @@ domain: technical
 
 The two are decoupled: packagers never need the site, and the site
 never blocks a package install. If GitHub Pages is down, `brew tap
-jbcom/tap && brew install <pkg>` still works because brew reads the
-tap git tree directly.
+jbcom/pkgs https://github.com/jbcom/pkgs && brew install <pkg>` still
+works because brew reads the tap git tree directly.
 
 ## Data flow
 
@@ -53,10 +53,10 @@ tap git tree directly.
 ### Homebrew
 
 - Canonical source: `Formula/<pkg>.rb` in this repo.
-- Operators resolve `brew tap jbcom/tap` → `github.com/jbcom/homebrew-tap`
-  (convention-based shorthand). We publish to both this repo and the
-  mirror (`jbcom/homebrew-tap`) via two entries in the upstream's
-  `.goreleaser.yaml` so the shorthand keeps working.
+- Operators tap with `brew tap jbcom/pkgs https://github.com/jbcom/pkgs`
+  (explicit URL form — the repo isn't named `homebrew-pkgs`). The old
+  `jbcom/homebrew-tap` mirror is retired; each upstream's release
+  pipeline publishes to this repo only.
 
 ### Scoop
 
