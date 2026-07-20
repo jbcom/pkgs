@@ -11,13 +11,14 @@ Pick the format that matches your OS.
 ### Homebrew (macOS, Linux, WSL2+Linuxbrew)
 
 ```bash
-brew tap jbcom/tap
+brew tap jbcom/pkgs https://github.com/jbcom/pkgs
 brew install <package>
 ```
 
-The `jbcom/tap` shorthand resolves to `github.com/jbcom/homebrew-tap`,
-a GoReleaser-managed mirror of this repo's `Formula/` directory. Both
-locations stay in sync on every release.
+The explicit URL form is required because this repo isn't named
+`homebrew-pkgs`. Homebrew serves `Formula/` (and `Casks/`) straight from
+this repo — the old `jbcom/homebrew-tap` mirror is retired; this is the
+single distribution repo.
 
 ### Scoop (Windows)
 
