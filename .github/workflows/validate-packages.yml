@@ -15,19 +15,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Validate Homebrew formulas (Ruby syntax)
+      - name: Validate Homebrew formulas and casks
         shell: bash
         run: |
           set -euo pipefail
-          shopt -s nullglob
-          files=(Formula/*.rb)
-          if [ ${#files[@]} -eq 0 ]; then
-            echo "No Homebrew formulas found"
-            exit 0
-          fi
-          for f in "${files[@]}"; do
-            ruby -c "$f"
-          done
+          ruby scripts/validate-homebrew.rb
+          ruby test/validate_homebrew_test.rb
 
       - name: Validate Scoop manifests
         shell: bash

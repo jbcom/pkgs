@@ -1,19 +1,19 @@
 ---
 title: jbcom/pkgs — agent entry point
-updated: 2026-04-15
+updated: 2026-07-25
 status: current
 domain: technical
 ---
 
 # jbcom/pkgs — Agent Entry Point
 
-Unified package repository for every `jbcom/*` project. Ships Homebrew,
-Scoop, and Chocolatey packages from one git tree plus an auto-generated
-Astro static site at <https://jonbogaty.com/pkgs/>.
+Unified package repository for every `jbcom/*` project. Ships Homebrew
+and Scoop manifests, tracks Chocolatey package sources, and builds an
+auto-generated Astro static site at <https://jonbogaty.com/pkgs/>.
 
 ## Critical rules
 
-- **Never edit `Formula/*.rb`, `bucket/*.json`, or
+- **Never edit `Formula/*.rb`, `Casks/*.rb`, `bucket/*.json`, or
   `choco/**/*.nuspec` by hand.** These are written by upstream projects'
   release pipelines (GoReleaser for Go projects, bespoke workflows for
   non-Go). Operator edits collide with auto-writes.
@@ -38,7 +38,9 @@ pnpm preview                   # serve the built site
 pnpm generate-directory        # rewrites src/data/directory/directory.json
 
 # Validation (mirrors CI)
-ruby -c Formula/*.rb
+ruby scripts/validate-homebrew.rb
+ruby test/validate_homebrew_test.rb
+pnpm test
 # Scoop + Chocolatey validators shown in README.md
 ```
 
@@ -46,15 +48,16 @@ ruby -c Formula/*.rb
 
 ```text
 Formula/        # Homebrew formulas (*.rb) — written by upstream release CI
+Casks/          # Homebrew casks (*.rb) — written by upstream release CI
 bucket/         # Scoop manifests (*.json) — written by upstream release CI
 choco/          # Chocolatey package sources — written by upstream release CI
 src/            # Astro site (forked from minted-directory-astro)
-scripts/        # generate-directory.mjs scans all three dirs → JSON
+scripts/        # generator + deterministic package validators
 .github/
   workflows/
     ci.yml                    # Astro build + type check on every PR
     cd.yml                    # Deploy to GitHub Pages on push to main
-    validate-packages.yml     # Formula/bucket/choco syntax validation on PR
+    validate-packages.yml     # Formula/Cask/bucket/choco validation on PR
     dependabot-automerge.yml  # Auto-merge non-major Dependabot PRs
     release.yml               # release-please
   dependabot.yml              # Weekly npm + actions
@@ -65,8 +68,8 @@ release-please-config.json    # Node package, Conventional Commits
 
 Upstream projects write manifests here on every tagged release:
 
-- **Go projects** use GoReleaser's `brews:`, `scoops:`,
-  `chocolateys:` blocks.
+- **Go projects** use GoReleaser's Homebrew Formula or Cask output plus
+  `scoops:` and `chocolateys:` blocks.
 - **Non-Go projects** use a bespoke workflow that calls `gh` CLI to
   commit manifests here.
 
