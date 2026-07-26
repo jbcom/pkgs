@@ -153,7 +153,10 @@ async function readChocoPackages(directory) {
 function docsUrl(homepage, name) {
   const dflt = `https://jonbogaty.com/${name}/`;
   if (!homepage) return dflt;
-  if (/github\.com\/jbcom\//.test(homepage)) return dflt;
+  const jbcomRepository = homepage.match(
+    /^https:\/\/github\.com\/jbcom\/([^/#]+)\/?$/,
+  )?.[1];
+  if (jbcomRepository) return `https://jonbogaty.com/${jbcomRepository}/`;
   return homepage;
 }
 

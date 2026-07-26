@@ -72,22 +72,30 @@ end
   const directory = await generateDirectory({ root, out });
 
   assert.deepEqual(
-    directory.map(({ id, tags, packagers }) => ({ id, tags, packagers })),
+    directory.map(({ id, tags, packagers, link }) => ({
+      id,
+      tags,
+      packagers,
+      link,
+    })),
     [
       {
         id: "paranoid-passwd",
         tags: ["homebrew-formula"],
         packagers: { "homebrew-formula": "3.6.5" },
+        link: "https://jonbogaty.com/paranoid-passwd/",
       },
       {
         id: "radioactive-ralph",
         tags: ["homebrew-cask", "scoop"],
         packagers: { "homebrew-cask": "0.22.0", scoop: "0.22.0" },
+        link: "https://jonbogaty.com/radioactive-ralph/",
       },
       {
         id: "radioactive-ralph-gui",
         tags: ["homebrew-cask"],
         packagers: { "homebrew-cask": "0.22.0" },
+        link: "https://jonbogaty.com/radioactive-ralph/",
       },
     ],
   );
