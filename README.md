@@ -1,7 +1,8 @@
 # jbcom/pkgs
 
-Unified package repository for every `jbcom/*` project — Homebrew,
-Scoop, and Chocolatey from one git tree. Public package index at
+Unified package repository for every `jbcom/*` project — Homebrew and
+Scoop manifests plus Chocolatey packaging sources in one git tree.
+Public package index at
 <https://jonbogaty.com/pkgs/>.
 
 ## Install
@@ -28,15 +29,12 @@ scoop bucket add jbcom https://github.com/jbcom/pkgs
 scoop install <package>
 ```
 
-### Chocolatey (Windows)
+### Chocolatey packaging source (Windows)
 
-```powershell
-choco install <package>
-```
-
-Chocolatey packages are published to the community feed directly on
-release; the `choco/` directory here holds the package sources for
-reproducibility.
+The `choco/` directory holds package sources for reproducibility.
+Chocolatey installs use the independent community feed, so a committed
+nuspec here does not assert that its version is live. Confirm feed
+availability before installing a package with Chocolatey.
 
 ## Repository layout
 

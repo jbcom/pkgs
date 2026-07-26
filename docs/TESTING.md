@@ -44,7 +44,7 @@ dependency is added.
 ## What to verify manually before a PR
 
 1. `pnpm dev` — landing renders, search filters work, tag
-   links (Homebrew Formula/Homebrew Cask/Scoop/Chocolatey) navigate
+   links (Homebrew Formula/Homebrew Cask/Scoop/Chocolatey Source) navigate
    correctly
 2. Visit a package detail page (e.g., `/pkgs/radioactive-ralph/`) —
    install snippets render, links to the project's own docs work

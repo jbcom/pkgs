@@ -12,8 +12,10 @@ domain: technical
 `jbcom/pkgs` is two systems sharing one git tree:
 
 1. **A package manifest registry** — `Formula/`, `Casks/`, `bucket/`,
-   and `choco/` committed directly. Packagers (Homebrew, Scoop,
-   Chocolatey) consume these files as-is.
+   and `choco/` committed directly. Homebrew and Scoop consume their
+   manifests from this tree. Chocolatey sources are reproducibility
+   evidence; distribution happens through its independent community
+   feed.
 2. **A static index site** — Astro 5, built from those same files,
    deployed to GitHub Pages.
 
@@ -84,6 +86,9 @@ Cask release path.
 - `choco/<pkg>/*.nuspec` in this repo is source-of-truth for
   reproducibility and audit, but `choco install <pkg>` does NOT hit this
   repo — it hits the central feed.
+- A committed nuspec is not a live-availability signal. The site labels
+  it as Chocolatey source rather than claiming that an install will
+  succeed.
 
 ## Site build
 

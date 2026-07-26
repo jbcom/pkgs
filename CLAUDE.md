@@ -7,9 +7,9 @@ domain: technical
 
 # jbcom/pkgs — Agent Entry Point
 
-Unified package repository for every `jbcom/*` project. Ships Homebrew,
-Scoop, and Chocolatey packages from one git tree plus an auto-generated
-Astro static site at <https://jonbogaty.com/pkgs/>.
+Unified package repository for every `jbcom/*` project. Ships Homebrew
+and Scoop manifests, tracks Chocolatey package sources, and builds an
+auto-generated Astro static site at <https://jonbogaty.com/pkgs/>.
 
 ## Critical rules
 

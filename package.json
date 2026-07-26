@@ -2,7 +2,7 @@
   "name": "@jbcom/pkgs-site",
   "type": "module",
   "version": "0.0.1",
-  "description": "Unified package index for Homebrew, Scoop, Chocolatey — every jbcom/* project, one tap.",
+  "description": "Unified Homebrew and Scoop package index with Chocolatey sources for every jbcom/* project.",
   "scripts": {
     "predev": "node scripts/generate-directory.mjs",
     "dev": "astro dev",

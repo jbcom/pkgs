@@ -9,7 +9,7 @@ iconLogo = "tabler:package"
 
 [general.seo]
 name = "jbcom/pkgs"
-description = "Unified Homebrew, Scoop, and Chocolatey index for every jbcom/* project."
+description = "Unified Homebrew and Scoop package index with Chocolatey sources for every jbcom/* project."
 url = "https://jonbogaty.com/pkgs"
 
 [directoryData.source]
@@ -45,10 +45,10 @@ description = "Installable via `scoop install` on Windows."
 
 [[directoryData.tags]]
 key = "chocolatey"
-name = "Chocolatey"
+name = "Chocolatey Source"
 color = "green"
 emoji = "🍫"
-description = "Installable via `choco install` on Windows."
+description = "Packaging source tracked here; live installs depend on the independent community feed."
 
 [header.banner]
 show = false
@@ -69,7 +69,7 @@ text = "Submit a project"
 href = "https://github.com/jbcom/pkgs/issues/new"
 
 [footer]
-description = "Unified package index for every jbcom/* project."
+description = "Unified package metadata for every jbcom/* project."
 
 [footer.socials.github]
 link = "https://github.com/jbcom"
