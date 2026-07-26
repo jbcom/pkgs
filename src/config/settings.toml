@@ -23,11 +23,18 @@ title = "{0} packages"
 placeholder = "Search {0} packages"
 
 [[directoryData.tags]]
-key = "homebrew"
-name = "Homebrew"
+key = "homebrew-formula"
+name = "Homebrew Formula"
 color = "orange"
 emoji = "🍺"
 description = "Installable via `brew install` on macOS, Linux, and WSL2+Linuxbrew."
+
+[[directoryData.tags]]
+key = "homebrew-cask"
+name = "Homebrew Cask"
+color = "purple"
+emoji = "📦"
+description = "Installable via `brew install --cask` on macOS."
 
 [[directoryData.tags]]
 key = "scoop"

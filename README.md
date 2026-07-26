@@ -12,7 +12,8 @@ Pick the format that matches your OS.
 
 ```bash
 brew tap jbcom/pkgs https://github.com/jbcom/pkgs
-brew install <package>
+brew install <formula>
+brew install --cask <cask>
 ```
 
 The explicit URL form is required because this repo isn't named
@@ -42,6 +43,7 @@ reproducibility.
 ```text
 .
 ├── Formula/                  # Homebrew formulas (*.rb) — written by release CI
+├── Casks/                    # Homebrew casks (*.rb) — written by release CI
 ├── bucket/                   # Scoop manifests (*.json) — written by release CI
 ├── choco/                    # Chocolatey package sources (*.nuspec, tools/)
 ├── src/                      # Astro site source
@@ -56,11 +58,12 @@ reproducibility.
 │   ├── pages/                # Astro routes
 │   └── styles/               # Global Tailwind theme overrides
 ├── scripts/
-│   └── generate-directory.mjs   # Scans Formula/ bucket/ choco/ → JSON
+│   ├── generate-directory.mjs   # Scans Formula/ Casks/ bucket/ choco/ → JSON
+│   └── validate-homebrew.rb     # Syntax + versioned Cask contract
 ├── astro.config.mjs
 ├── package.json              # pnpm + node 24
 └── .github/workflows/
-    ├── validate-packages.yml # Validates Formula / bucket / choco on PR
+    ├── validate-packages.yml # Validates Formula / Cask / bucket / choco on PR
     └── deploy.yml            # Deploys site to GitHub Pages on push to main
 ```
 
@@ -68,9 +71,9 @@ reproducibility.
 
 Each upstream project's release pipeline publishes into this repo:
 
-- **Go projects** (e.g., `radioactive-ralph`) use GoReleaser. The
-  `brews:`, `scoops:`, and `chocolateys:` blocks in their
-  `.goreleaser.yaml` write to `jbcom/pkgs` directly. See
+- **Go projects** use GoReleaser for Formula or Cask output plus Scoop
+  and Chocolatey manifests. `radioactive-ralph` intentionally publishes
+  a CLI cask and a GUI cask instead of a formula. See
   [the radioactive-ralph config](https://github.com/jbcom/radioactive-ralph/blob/main/.goreleaser.yaml)
   for a reference implementation.
 
@@ -78,8 +81,9 @@ Each upstream project's release pipeline publishes into this repo:
   publishing workflow in their own repo that commits manifests here
   via `gh` CLI on every tagged release.
 
-Direct edits to `Formula/`, `bucket/`, or `choco/` are rare; when they
-happen, CI validates them on every PR.
+Direct edits to `Formula/`, `Casks/`, `bucket/`, or `choco/` are rare;
+when they happen, CI validates them on every PR. A package token cannot
+exist in both `Formula/` and `Casks/`.
 
 ## Local development
 
@@ -94,8 +98,11 @@ pnpm preview   # serve the built site
 ```
 
 `pnpm generate-directory` rebuilds `src/data/directory/directory.json`
-from the current `Formula/`, `bucket/`, and `choco/` content. Runs
-automatically on `predev` and `prebuild`.
+from the current `Formula/`, `Casks/`, `bucket/`, and `choco/` content.
+Formula and Cask delivery receive distinct index tags. The generator
+merges cross-platform manifests by package token and rejects a
+Formula/Cask collision. It runs automatically on `predev` and
+`prebuild`.
 
 ## Publishing standards
 
@@ -107,9 +114,12 @@ automatically on `predev` and `prebuild`.
 
 ## Validation
 
-CI runs three checks on every PR:
+CI runs four package-format checks on every PR:
 
-- **Homebrew** — Ruby syntax (`ruby -c`) on every `Formula/*.rb`
+- **Homebrew Formula** — Ruby syntax on every `Formula/*.rb`
+- **Homebrew Cask** — Ruby syntax plus required token, pinned semantic
+  version, SHA-256, HTTPS URL/homepage, metadata, artifact, and
+  Formula/Cask collision checks on every `Casks/*.rb`
 - **Scoop** — JSON parse + required keys (`version`, `description`,
   `homepage`, `license`, `url`, `hash`) on every `bucket/*.json`
 - **Chocolatey** — XML parse on every `choco/**/*.nuspec`
@@ -117,7 +127,9 @@ CI runs three checks on every PR:
 Run locally:
 
 ```bash
-ruby -c Formula/*.rb
+ruby scripts/validate-homebrew.rb
+ruby test/validate_homebrew_test.rb
+pnpm test
 
 python3 - <<'PY'
 import glob, json
