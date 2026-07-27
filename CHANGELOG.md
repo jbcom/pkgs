@@ -12,6 +12,13 @@ All notable changes to `jbcom/pkgs` are documented in this file.
 The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1](https://github.com/jbcom/pkgs/compare/pkgs-site-v0.2.0...pkgs-site-v0.2.1) (2026-07-27)
+
+
+### Bug Fixes
+
+* **site:** correct stale package index and broken page metadata ([#57](https://github.com/jbcom/pkgs/issues/57)) ([635abf8](https://github.com/jbcom/pkgs/commit/635abf8d6e2630c473fd4983a9c4021d9300f60b))
+
 ## [0.2.0](https://github.com/jbcom/pkgs/compare/pkgs-site-v0.1.0...pkgs-site-v0.2.0) (2026-07-27)
 
 
