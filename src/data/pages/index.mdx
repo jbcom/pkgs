@@ -1,6 +1,6 @@
 ---
 title: "jbcom/pkgs"
-description: "Unified Homebrew, Scoop, and Chocolatey index for every jbcom/* project."
+description: "Unified Homebrew and Scoop package index with Chocolatey sources for every jbcom/* project."
 ---
 import Grid from '@/components/directory/Grid.astro'
 import Search from '@/components/directory/Search.astro'
@@ -11,10 +11,15 @@ One tap. Every platform. Every `jbcom/*` project.
 
 ## Tap this repo
 
-**Homebrew** (macOS, Linux, WSL2+Linuxbrew)
+**Homebrew Formula** (macOS, Linux, WSL2+Linuxbrew)
 ```bash
-brew tap jbcom/tap
+brew tap jbcom/pkgs https://github.com/jbcom/pkgs
 brew install <package>
+```
+
+**Homebrew Cask** (macOS)
+```bash
+brew install --cask <package>
 ```
 
 **Scoop** (Windows)
@@ -23,10 +28,11 @@ scoop bucket add jbcom https://github.com/jbcom/pkgs
 scoop install <package>
 ```
 
-**Chocolatey** (Windows — no tap needed)
-```powershell
-choco install <package>
-```
+**Chocolatey Source** (Windows)
+
+Packaging sources are tracked here for reproducibility. A committed
+nuspec does not guarantee that its version is live on the independent
+Chocolatey community feed.
 
 ## Packages
 
