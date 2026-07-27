@@ -8,12 +8,38 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write # dispatch the required checks onto the release PR branch
 
 jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        id: release
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
+      # `validate` and `build-site` are required status checks, but they only
+      # trigger on `pull_request`, and GitHub does not fire that event for PRs
+      # opened by GITHUB_TOKEN — which is how release-please opens this one.
+      # Without this the release PR reports zero checks and sits permanently
+      # BLOCKED. Dispatch both explicitly against the release branch so the
+      # required contexts actually report.
+      - name: Run required checks on the release PR
+        if: steps.release.outputs.prs_created == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_PR: ${{ steps.release.outputs.pr }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="$(printf '%s' "$RELEASE_PR" | jq -r '.headBranchName')"
+          if [ -z "$branch" ] || [ "$branch" = "null" ]; then
+            echo "::error::could not read headBranchName from release-please output"
+            exit 1
+          fi
+          for wf in ci.yml validate-packages.yml; do
+            echo "Dispatching $wf on $branch"
+            gh workflow run "$wf" --ref "$branch" --repo "$GITHUB_REPOSITORY"
+          done
