@@ -1,6 +1,6 @@
 ---
 title: Testing
-updated: 2026-04-15
+updated: 2026-07-25
 status: current
 domain: quality
 ---
@@ -9,34 +9,43 @@ domain: quality
 
 ## Strategy
 
-`jbcom/pkgs` has no unit tests. The repo is thin:
+`jbcom/pkgs` keeps focused contract tests around its package seam:
 
 - A deterministic generator script (`scripts/generate-directory.mjs`)
   that reads well-known file formats and emits sorted JSON
 - An Astro template with its own upstream tests
-- Three packager validators that shell out to `ruby -c`, `python3`
-  JSON parse, and `python3` XML parse
+- Homebrew syntax and Cask structure validation in
+  `scripts/validate-homebrew.rb`
+- Scoop JSON and Chocolatey XML validators in CI
 
-Adding a unit-test framework would be cost-negative for this surface.
+The tests use the Node and Ruby standard libraries; no test framework
+dependency is added.
 
 ## What CI verifies
 
 `ci.yml` (on every PR):
 
 - `pnpm install --frozen-lockfile` — lockfile integrity
+- `pnpm test` — deterministic index output and Formula/Cask collision
+  handling (runs through `prebuild`)
 - `astro check` — TypeScript + Astro type checking
 - `pnpm build` — full static build must succeed
 
 `validate-packages.yml` (on every PR):
 
-- `ruby -c Formula/*.rb` — Ruby syntax validity for every formula
+- Ruby syntax validity for every Formula and Cask
+- Cask token, version, SHA-256, URL, metadata, artifact, and
+  Formula/Cask collision contract
+- Ruby unit tests for accepted CLI/GUI Cask shapes and rejected
+  structural failures
 - JSON parse + required-key check on every `bucket/*.json`
 - XML parse on every `choco/**/*.nuspec`
 
 ## What to verify manually before a PR
 
 1. `pnpm dev` — landing renders, search filters work, tag
-   links (Homebrew/Scoop/Chocolatey) navigate correctly
+   links (Homebrew Formula/Homebrew Cask/Scoop/Chocolatey Source) navigate
+   correctly
 2. Visit a package detail page (e.g., `/pkgs/radioactive-ralph/`) —
    install snippets render, links to the project's own docs work
 3. Toggle light/dark mode — no broken colors or unreadable text
@@ -46,7 +55,11 @@ Adding a unit-test framework would be cost-negative for this surface.
 
 ```bash
 # Homebrew
-ruby -c Formula/*.rb
+ruby scripts/validate-homebrew.rb
+ruby test/validate_homebrew_test.rb
+
+# Directory generator
+pnpm test
 
 # Scoop
 python3 - <<'PY'

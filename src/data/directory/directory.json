@@ -1,19 +1,35 @@
 [
   {
-    "id": "radioactive-ralph",
-    "title": "radioactive-ralph",
-    "description": "Autonomous continuous development orchestrator for Claude Code",
+    "id": "paranoid-passwd",
+    "title": "paranoid-passwd",
+    "description": "Local-first password manager and generator with CLI and TUI",
     "tags": [
       "chocolatey",
-      "homebrew",
+      "homebrew-formula",
+      "scoop"
+    ],
+    "link": "https://jonbogaty.com/paranoid-passwd/",
+    "featured": false,
+    "packagers": {
+      "chocolatey": "3.6.5",
+      "homebrew-formula": "3.6.5",
+      "scoop": "3.6.5"
+    },
+    "license": "GPL-3.0-only"
+  },
+  {
+    "id": "radioactive-ralph",
+    "title": "radioactive-ralph",
+    "description": "Binary-first repo runtime with many Ralph personalities",
+    "tags": [
+      "chocolatey",
       "scoop"
     ],
     "link": "https://jonbogaty.com/radioactive-ralph/",
     "featured": false,
     "packagers": {
-      "homebrew": "0.6.0",
-      "scoop": "0.6.0",
-      "chocolatey": "0.6.0"
+      "chocolatey": "0.6.0",
+      "scoop": "0.8.2"
     },
     "license": "MIT"
   }
