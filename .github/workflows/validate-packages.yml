@@ -113,3 +113,27 @@ jobs:
               ET.parse(path)
           print(f"Validated {len(files)} nuspec file(s)")
           PY
+
+      # src/data/directory/directory.json is generated from the package
+      # manifests but committed to the repo, so it can silently go stale when a
+      # manifest is bumped without re-running the generator — which is how the
+      # site kept advertising paranoid-passwd 3.6.5 after it had shipped 3.7.0.
+      # Regenerate and fail if the committed copy differs.
+      - name: Set up Node
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Check generated directory.json is up to date
+        shell: bash
+        run: |
+          set -euo pipefail
+          corepack enable
+          pnpm install --frozen-lockfile
+          node scripts/generate-directory.mjs
+          if ! git diff --quiet -- src/data/directory/directory.json; then
+            echo "::error::src/data/directory/directory.json is stale. Run 'node scripts/generate-directory.mjs' and commit the result."
+            git --no-pager diff -- src/data/directory/directory.json
+            exit 1
+          fi
+          echo "directory.json is in sync with the package manifests"

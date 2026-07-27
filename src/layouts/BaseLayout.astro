@@ -3,47 +3,56 @@ import "@fontsource-variable/gabarito";
 import themeConfig from "@util/themeConfig";
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
-import { getOGImage } from "@util/getOGImage";
 
-const { title, slug } = Astro.props;
+const { title, description } = Astro.props;
 const siteTitle = themeConfig.general.title;
+const seo = themeConfig.general.seo;
 
 const calculatedTitle = title || siteTitle;
+const calculatedDescription = description || seo.description;
+
+// Absolute, per-page canonical URL. Astro.site is the apex and Astro.url.pathname
+// already carries the `/pkgs` base, so this resolves correctly for every route
+// instead of pointing every page at the site root.
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? seo.url).href;
+
+// Base-aware asset paths — a bare "/favicon.svg" would resolve to the apex and
+// 404, because the site is served under /pkgs.
+const favicon = `${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/{2,}/g, "/");
+const sitemap = `${import.meta.env.BASE_URL}/sitemap-index.xml`.replace(/\/{2,}/g, "/");
+
+// The twitter:domain is the bare host of the canonical site.
+const twitterDomain = new URL(seo.url).hostname;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <link rel="sitemap" href={sitemap} />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
     <title>{calculatedTitle}</title>
-    <meta name="description" content={themeConfig.general.seo.description} />
+    <meta name="description" content={calculatedDescription} />
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content={themeConfig.general.seo.url} />
+    <!-- Open Graph -->
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={seo.name} />
     <meta property="og:title" content={calculatedTitle} />
-    <meta
-      property="og:description"
-      content={themeConfig.general.seo.description}
-    />
-    <meta property="og:image" content={getOGImage(slug)} />
+    <meta property="og:description" content={calculatedDescription} />
 
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content="codeagents.dev" />
-    <meta property="twitter:url" content={themeConfig.general.seo.url} />
-    <meta name="twitter:title" content={themeConfig.general.seo.name} />
-    <meta
-      name="twitter:description"
-      content={themeConfig.general.seo.description}
-    />
-    <meta name="twitter:image" content={getOGImage(slug)} />
+    <!-- Twitter. `summary` rather than `summary_large_image`: this site ships no
+         OG images, and summary_large_image without an image renders as a bare
+         link. Switch back if per-page OG image generation is ever added. -->
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:domain" content={twitterDomain} />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={calculatedTitle} />
+    <meta name="twitter:description" content={calculatedDescription} />
     <ClientRouter />
   </head>
   <body class="bg-white dark:bg-gray-900">

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import AppProse from "../components/app/Prose.astro";
-const { frontmatter, slug } = Astro.props;
+const { frontmatter } = Astro.props;
 import themeConfig from "@util/themeConfig";
 import { Icon } from "astro-icon/components";
 import AppShell from "@components/app/AppShell.astro";
@@ -18,7 +18,7 @@ const pageHeader = themeConfig.listings.pageHeader;
 const sidebar = config.layout.sidebar;
 ---
 
-<BaseLayout title={title} description={description} slug={slug}>
+<BaseLayout title={title} description={description}>
   {
     sidebar ? (
       <SidebarShell showSidebar={false}>
