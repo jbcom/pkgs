@@ -1,0 +1,28 @@
+# pnpm reads its settings from THIS file, not from a `pnpm` field in
+# package.json. Since pnpm 11 the package.json field is ignored outright — and
+# silently, with no warning — so overrides defined there become inert while the
+# repo still looks patched. These are security patches for transitive
+# dependencies, so they live here where both pnpm 10 and 11 honour them.
+#
+# Each range is pinned to the SAME major the tree already resolves: a bare
+# ">=" pulls the next major (js-yaml 5, undici 8, fast-uri 4, svgo 4) and
+# breaks the build. esbuild is deliberately absent — its only advisory is a low
+# severity dev-server file read on Windows, which this repo never runs, and
+# forcing >=0.28.1 breaks @astrojs/vue.
+#
+# Revisit when Astro is upgraded; several may become unnecessary.
+
+packages:
+  - .
+
+overrides:
+  "@babel/core": "^7.29.6"
+  fast-uri: "~3.1.4"
+  js-yaml: "^4.3.0"
+  postcss: "^8.5.18"
+  sharp: "^0.35.3"
+  svgo: "^3.3.4"
+  tar: "^7.5.18"
+  undici: "^7.28.0"
+  vite: "^6.4.3"
+  yaml: "^2.8.3"
