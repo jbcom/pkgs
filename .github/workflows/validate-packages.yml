@@ -4,6 +4,11 @@ on:
   pull_request:
   push:
     branches: ["main"]
+  # `validate` is a required status check. PRs opened by GITHUB_TOKEN (notably
+  # release-please's) do not fire `pull_request`, so the check never reports and
+  # those PRs stay permanently BLOCKED. workflow_dispatch lets the run be
+  # started against the PR's branch so the required context can report.
+  workflow_dispatch:
 
 permissions:
   contents: read
