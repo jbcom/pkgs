@@ -1,8 +1,8 @@
 $ErrorActionPreference = 'Stop'
 $packageName  = 'paranoid-passwd'
 $toolsDir     = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url64        = 'https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.6.5/paranoid-passwd-3.6.5-windows-amd64.zip'
-$checksum64   = 'a585b2660d0e09b9edb4a8de27a3021b663b49e9e0717b90f56996d9df3b4d0d'
+$url64        = 'https://github.com/jbcom/paranoid-passwd/releases/download/paranoid-passwd-v3.7.0/paranoid-passwd-3.7.0-windows-amd64.zip'
+$checksum64   = 'fae9ae7906ab4b6e33c03c5cb93686f9d1b3a673e9085e3274ea296ac80d2298'
 
 $packageArgs = @{
   packageName   = $packageName
