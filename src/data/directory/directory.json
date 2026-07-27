@@ -11,9 +11,9 @@
     "link": "https://jonbogaty.com/paranoid-passwd/",
     "featured": false,
     "packagers": {
-      "chocolatey": "3.6.5",
-      "homebrew-formula": "3.6.5",
-      "scoop": "3.6.5"
+      "chocolatey": "3.7.0",
+      "homebrew-formula": "3.7.0",
+      "scoop": "3.7.0"
     },
     "license": "GPL-3.0-only"
   },

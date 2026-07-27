@@ -29,7 +29,6 @@
     "@rgrove/parse-xml": "^4.2.2",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.1.1",
-    "@vercel/og": "^0.11.1",
     "astro": "^5.18.2",
     "astro-color-scheme": "^1.1.5",
     "nanostores": "^1.4.0",
