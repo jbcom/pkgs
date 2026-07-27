@@ -1,6 +1,6 @@
 ---
 title: Contributing
-updated: 2026-04-15
+updated: 2026-07-25
 status: current
 domain: context
 ---
@@ -16,7 +16,8 @@ upstream releases, but human contributions are welcome for:
 - Documentation corrections
 - New packager integrations
 
-**What to not send**: hand-edited `Formula/*.rb`, `bucket/*.json`, or
+**What to not send**: hand-edited `Formula/*.rb`, `Casks/*.rb`,
+`bucket/*.json`, or
 `choco/**/*.nuspec` files. These are written by the upstream project's
 release pipeline. If you spot a bug in a formula, fix it in that
 project's repo, not here.
@@ -35,7 +36,7 @@ pnpm dev      # http://localhost:4321/pkgs/
 ## Development loop
 
 1. Make your change on a feature branch.
-2. Run `pnpm build` locally — CI will run this again on your PR.
+2. Run `pnpm test` and `pnpm build` locally — CI will run them again.
 3. If you changed validation logic, also run the snippets in
    [`README.md`](README.md#validation) against real manifests.
 4. Open a PR; conventional-commits title (`feat:`, `fix:`, `docs:`,
@@ -47,7 +48,7 @@ pnpm dev      # http://localhost:4321/pkgs/
 
 1. Add a reader function to `scripts/generate-directory.mjs` that
    normalizes that packager's manifest format into the unified entry
-   shape (see `readFormulas`, `readScoopBuckets`,
+   shape (see `readRubyPackages`, `readScoopBuckets`,
    `readChocoPackages`).
 2. Add the packager tag to `src/config/settings.toml` under
    `[[directoryData.tags]]`.

@@ -1,6 +1,6 @@
 ---
 title: jbcom/pkgs — extended agent protocols
-updated: 2026-04-15
+updated: 2026-07-25
 status: current
 domain: technical
 ---
@@ -26,9 +26,9 @@ See [`CLAUDE.md`](CLAUDE.md) for the short-form entry point.
 ┌───────────────────────────────────────────────────────────┐
 │ jbcom/pkgs repo (this repo)                               │
 │                                                           │
-│  Formula/*.rb   bucket/*.json   choco/**/*.nuspec         │
-│        │              │               │                   │
-│        └──────┬───────┴───────┬───────┘                   │
+│ Formula/*.rb Casks/*.rb bucket/*.json choco/**/*.nuspec   │
+│        │          │          │              │              │
+│        └──────────┴─────┬────┴──────────────┘              │
 │               ▼               ▼                           │
 │     scripts/generate-directory.mjs                        │
 │               │                                           │
@@ -49,11 +49,26 @@ See [`CLAUDE.md`](CLAUDE.md) for the short-form entry point.
 
 When a project releases v2.0.0:
 
-- GoReleaser **overwrites** `Formula/<pkg>.rb`, `bucket/<pkg>.json`
+- GoReleaser **overwrites** one of `Formula/<pkg>.rb` or
+  `Casks/<pkg>.rb`, plus `bucket/<pkg>.json`
 - Chocolatey publishes `.nupkg` to the community feed (not this repo)
 - `choco/<pkg>/*.nuspec` is a snapshot of the most recent push
 
 History is in git, not across parallel files. No `v1/` + `v2/` dirs.
+
+### Formula and Cask tokens are mutually exclusive
+
+The same token must never exist in both `Formula/` and `Casks/`.
+`scripts/validate-homebrew.rb` and the directory generator both fail
+closed on that collision. CLI software may intentionally ship as a cask;
+use `brew install --cask <token>` so a stale formula can never shadow it.
+
+`radioactive-ralph` uses two casks:
+
+- `radioactive-ralph` for the CLI
+- `radioactive-ralph-gui` for the desktop app
+
+Its retired `Formula/radioactive-ralph.rb` must not be restored.
 
 ### Directory generator is deterministic
 
@@ -76,7 +91,7 @@ requires:
 ### All Actions pinned to SHA + tagged comment
 
 ```yaml
-uses: withastro/action@44706356b4eb735f8b9035699eb4796241a040c4 # v6.1.0
+uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853 # v6.1.2
 ```
 
 Dependabot's weekly PR updates both the SHA and the comment. The
@@ -84,13 +99,15 @@ automerge workflow merges non-major PRs unattended.
 
 ## Testing
 
-No unit tests (trivially pure script + template-driven site).
 Verification is:
 
+- `pnpm test` proves deterministic Formula/Cask indexing and collision handling
+- `ruby test/validate_homebrew_test.rb` proves the Cask structural contract
+- `ruby scripts/validate-homebrew.rb` validates all committed Formula/Cask files
 - `pnpm build` succeeds locally and in CI
 - Preview (`pnpm preview`) renders `/` and `/<package>/` without
   console errors
-- `validate-packages.yml` catches syntactic regressions on PR
+- `validate-packages.yml` catches syntax and structural regressions on PR
 
 ## When to escalate to the operator
 

@@ -1,6 +1,6 @@
 ---
 title: Architecture
-updated: 2026-04-15
+updated: 2026-07-25
 status: current
 domain: technical
 ---
@@ -11,16 +11,18 @@ domain: technical
 
 `jbcom/pkgs` is two systems sharing one git tree:
 
-1. **A package manifest registry** — `Formula/`, `bucket/`, `choco/`
-   committed directly. Packagers (Homebrew, Scoop, Chocolatey) consume
-   these files as-is.
+1. **A package manifest registry** — `Formula/`, `Casks/`, `bucket/`,
+   and `choco/` committed directly. Homebrew and Scoop consume their
+   manifests from this tree. Chocolatey sources are reproducibility
+   evidence; distribution happens through its independent community
+   feed.
 2. **A static index site** — Astro 5, built from those same files,
    deployed to GitHub Pages.
 
 The two are decoupled: packagers never need the site, and the site
 never blocks a package install. If GitHub Pages is down, `brew tap
-jbcom/tap && brew install <pkg>` still works because brew reads the
-tap git tree directly.
+jbcom/pkgs https://github.com/jbcom/pkgs && brew install <pkg>` still
+works because brew reads the tap git tree directly.
 
 ## Data flow
 
@@ -34,9 +36,10 @@ tap git tree directly.
                      ▼
 ┌─ jbcom/pkgs ────────────────────────────────────────────┐
 │                                                         │
-│  Formula/<pkg>.rb  ─┐                                   │
-│  bucket/<pkg>.json ─┼─→ scripts/generate-directory.mjs  │
-│  choco/<pkg>/.nuspec┘          │                        │
+│  Formula/<pkg>.rb ──┐                                    │
+│  Casks/<pkg>.rb ────┤                                    │
+│  bucket/<pkg>.json ─┼─→ scripts/generate-directory.mjs   │
+│  choco/<pkg>/.nuspec┘          │                         │
 │                                ▼                        │
 │                    src/data/directory/directory.json    │
 │                                │                        │
@@ -50,13 +53,26 @@ tap git tree directly.
 
 ## Packager-specific notes
 
-### Homebrew
+### Homebrew Formula and Cask
 
-- Canonical source: `Formula/<pkg>.rb` in this repo.
-- Operators resolve `brew tap jbcom/tap` → `github.com/jbcom/homebrew-tap`
-  (convention-based shorthand). We publish to both this repo and the
-  mirror (`jbcom/homebrew-tap`) via two entries in the upstream's
-  `.goreleaser.yaml` so the shorthand keeps working.
+- Canonical sources: `Formula/<pkg>.rb` and `Casks/<pkg>.rb` in this
+  repo.
+- One token may use one Homebrew delivery type only. Both validation
+  and index generation reject a token present in both directories.
+- Formulae are indexed as `homebrew-formula`; Casks are indexed as
+  `homebrew-cask`. Scoop and Chocolatey entries with the same token
+  still merge into one package card.
+- Operators tap with `brew tap jbcom/pkgs https://github.com/jbcom/pkgs`
+  (explicit URL form — the repo isn't named `homebrew-pkgs`). The old
+  `jbcom/homebrew-tap` mirror is retired; each upstream's release
+  pipeline publishes to this repo only.
+- Formula installs use `brew install <formula>`. Cask installs use the
+  explicit `brew install --cask <cask>` form.
+
+`radioactive-ralph` deliberately uses `radioactive-ralph` (CLI) and
+`radioactive-ralph-gui` (desktop app) Casks. Its v0.8.2 formula was
+retired because that independent Formula line could shadow the current
+Cask release path.
 
 ### Scoop
 
@@ -70,6 +86,9 @@ tap git tree directly.
 - `choco/<pkg>/*.nuspec` in this repo is source-of-truth for
   reproducibility and audit, but `choco install <pkg>` does NOT hit this
   repo — it hits the central feed.
+- A committed nuspec is not a live-availability signal. The site labels
+  it as Chocolatey source rather than claiming that an install will
+  succeed.
 
 ## Site build
 
