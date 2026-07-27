@@ -1,4 +1,9 @@
-import { z } from "zod";
+// Content-collection schemas must use Astro's bundled Zod instance, not the
+// standalone `zod` dependency. `astro:content` composes these with its own
+// `image()` schema, and Zod rejects schemas built by a different instance
+// ("expected a Zod schema") whenever the two majors diverge — Astro pins v3
+// while the site depends on v4 for its non-content validation.
+import { z } from "astro:content";
 
 export const directorySchema = (imageSchema: z.ZodTypeAny) =>
   z.object({
