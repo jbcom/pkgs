@@ -12,6 +12,28 @@ All notable changes to `jbcom/pkgs` are documented in this file.
 The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0](https://github.com/jbcom/pkgs/compare/pkgs-site-v0.1.0...pkgs-site-v0.2.0) (2026-07-27)
+
+
+### Features
+
+* establish jbcom/pkgs foundation ([#1](https://github.com/jbcom/pkgs/issues/1)) ([5e60871](https://github.com/jbcom/pkgs/commit/5e6087117fc1ee19545f62e064072b8e1a0d4831))
+* **paranoid-passwd:** bump to 3.5.2 ([#9](https://github.com/jbcom/pkgs/issues/9)) ([dff3103](https://github.com/jbcom/pkgs/commit/dff310349000f4eff04dd6861eda78d02ea74353))
+* **paranoid-passwd:** bump to 3.6.5 ([#20](https://github.com/jbcom/pkgs/issues/20)) ([c1db6df](https://github.com/jbcom/pkgs/commit/c1db6df2feae2bcf96b843da7d70719c5cb91402))
+* **paranoid-passwd:** bump to 3.7.0 ([#22](https://github.com/jbcom/pkgs/issues/22)) ([56eeb97](https://github.com/jbcom/pkgs/commit/56eeb977c5a41c5763377fe27c84fe147e0f879a))
+* support canonical Homebrew casks ([#54](https://github.com/jbcom/pkgs/issues/54)) ([2936b74](https://github.com/jbcom/pkgs/commit/2936b7407c0f493bcbd47fcd4e9cf89b80213d4c))
+
+
+### Bug Fixes
+
+* **ci:** accept multi-arch Scoop manifests in validator ([#11](https://github.com/jbcom/pkgs/issues/11)) ([287dc53](https://github.com/jbcom/pkgs/commit/287dc531df808230c976759164f95991d3ab2544))
+
+
+### Documentation
+
+* canonical URL is https://jonbogaty.com/pkgs/ ([#7](https://github.com/jbcom/pkgs/issues/7)) ([1a16fe1](https://github.com/jbcom/pkgs/commit/1a16fe1985cb8ac2b2ac8834d549718217333d47))
+* retire the jbcom/homebrew-tap mirror — pkgs is the single tap ([#53](https://github.com/jbcom/pkgs/issues/53)) ([fe173c9](https://github.com/jbcom/pkgs/commit/fe173c9690d6cacce8f941020c8a0a64a206c284))
+
 ## [Unreleased]
 
 ### Added
