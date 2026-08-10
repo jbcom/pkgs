@@ -104,20 +104,20 @@ importers:
         version: 0.9.0(rollup@4.61.1)
     optionalDependencies:
       '@rollup/rollup-darwin-arm64':
-        specifier: ^4.62.3
-        version: 4.62.3
+        specifier: ^4.62.4
+        version: 4.62.4
       '@rollup/rollup-darwin-x64':
-        specifier: ^4.62.3
-        version: 4.62.3
+        specifier: ^4.62.4
+        version: 4.62.4
       '@rollup/rollup-linux-arm64-gnu':
-        specifier: ^4.62.3
-        version: 4.62.3
+        specifier: ^4.62.4
+        version: 4.62.4
       '@rollup/rollup-linux-x64-gnu':
-        specifier: ^4.62.3
-        version: 4.62.3
+        specifier: ^4.62.4
+        version: 4.62.4
       '@rollup/rollup-win32-x64-msvc':
-        specifier: ^4.62.3
-        version: 4.62.3
+        specifier: ^4.62.4
+        version: 4.62.4
 
 packages:
 
@@ -965,8 +965,8 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
-  '@rollup/rollup-darwin-arm64@4.62.3':
-    resolution: {integrity: sha512-Pch2pFNOxxz1hTjypIdPyRTR6riiwRl84+VcN9djS680fw+Co1nAJINrdpqp7KV0NvyuU8ilZXZCjd7ykJl1GQ==}
+  '@rollup/rollup-darwin-arm64@4.62.4':
+    resolution: {integrity: sha512-krw5uS2STmvJ02x0uTXHbqQNuz+9eZ1iw+qXk9dmW2gvV4jV7O2hEoOnuhFrpOPiel1mBFtqbxYZZtC46hXLOw==}
     cpu: [arm64]
     os: [darwin]
 
@@ -975,8 +975,8 @@ packages:
     cpu: [x64]
     os: [darwin]
 
-  '@rollup/rollup-darwin-x64@4.62.3':
-    resolution: {integrity: sha512-LEuncFUHFiF8t4yZVZvvZA1wk0pjAscRnsrn1EfTEmN4HXotBi2YtcnLRyaK6UbuczW7xZS5ES+81Rdz8Z0T6g==}
+  '@rollup/rollup-darwin-x64@4.62.4':
+    resolution: {integrity: sha512-wsTxtgApb4PrOsNJIm0FZ1h3WvCC+k9uxLJ4ad75hgoS4NiRes2SoJFlDAyMwiUY8IssDqGcHbXuN0sx1tfF1A==}
     cpu: [x64]
     os: [darwin]
 
@@ -1008,8 +1008,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rollup/rollup-linux-arm64-gnu@4.62.3':
-    resolution: {integrity: sha512-LLLFZKt4/Nraf9rxDkhiU8QVgLF4WmCkfr0L4fj0fPfIZFBib0DeiFk1hhaYKd03LFAFJcxHslhDFlNJLylf5Q==}
+  '@rollup/rollup-linux-arm64-gnu@4.62.4':
+    resolution: {integrity: sha512-CcnXHWnXg69g+DX5VWL3FHts3qMRN2uVEHX+BZvGLdd07/gXkn3ePjYtO1LDJvxkGKVHMclKBRa1QUTH+6toYQ==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
@@ -1068,8 +1068,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rollup/rollup-linux-x64-gnu@4.62.3':
-    resolution: {integrity: sha512-V4KtWtQfAFMU7+9/A/VDps/VI8CHd3cYz0L8sgJzz8qK7eY7wI4ruFD82UYIYvW9Z4DtlTfhQcsl4XyPHW5uSg==}
+  '@rollup/rollup-linux-x64-gnu@4.62.4':
+    resolution: {integrity: sha512-W69hukhZ3KKNRCaMIEzKvcFye42hh0FE1+YoYaf5+Ikacuftoco6yO/xouz0hc5d5W/s3yBro5jRiuEE/Q5vUw==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
@@ -1110,8 +1110,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rollup/rollup-win32-x64-msvc@4.62.3':
-    resolution: {integrity: sha512-MOG/3gTOn4Fwf574RVOaY61I5o6P90legkFADiTyn1hyjNydT+cerU2rLUwPdZkKKyJ+iT+K9p7WXK4LM1Ka6g==}
+  '@rollup/rollup-win32-x64-msvc@4.62.4':
+    resolution: {integrity: sha512-zD6NdeWEByGE9QF9vCrlJ5YQB4oq9q91kPZS37Jwj5hOkvR1lTBSpsKhKDw4IJtbQ35LsTS1HD9DZYGKIshU1Q==}
     cpu: [x64]
     os: [win32]
 
@@ -4066,13 +4066,13 @@ snapshots:
   '@rollup/rollup-darwin-arm64@4.61.1':
     optional: true
 
-  '@rollup/rollup-darwin-arm64@4.62.3':
+  '@rollup/rollup-darwin-arm64@4.62.4':
     optional: true
 
   '@rollup/rollup-darwin-x64@4.61.1':
     optional: true
 
-  '@rollup/rollup-darwin-x64@4.62.3':
+  '@rollup/rollup-darwin-x64@4.62.4':
     optional: true
 
   '@rollup/rollup-freebsd-arm64@4.61.1':
@@ -4090,7 +4090,7 @@ snapshots:
   '@rollup/rollup-linux-arm64-gnu@4.61.1':
     optional: true
 
-  '@rollup/rollup-linux-arm64-gnu@4.62.3':
+  '@rollup/rollup-linux-arm64-gnu@4.62.4':
     optional: true
 
   '@rollup/rollup-linux-arm64-musl@4.61.1':
@@ -4120,7 +4120,7 @@ snapshots:
   '@rollup/rollup-linux-x64-gnu@4.61.1':
     optional: true
 
-  '@rollup/rollup-linux-x64-gnu@4.62.3':
+  '@rollup/rollup-linux-x64-gnu@4.62.4':
     optional: true
 
   '@rollup/rollup-linux-x64-musl@4.61.1':
@@ -4144,7 +4144,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.61.1':
     optional: true
 
-  '@rollup/rollup-win32-x64-msvc@4.62.3':
+  '@rollup/rollup-win32-x64-msvc@4.62.4':
     optional: true
 
   '@sec-ant/readable-stream@0.4.1': {}
