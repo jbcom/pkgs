@@ -26,7 +26,7 @@
     "@headlessui/vue": "^1.7.23",
     "@iarna/toml": "^2.2.5",
     "@nanostores/vue": "^1.1.0",
-    "@rgrove/parse-xml": "^4.2.3",
+    "@rgrove/parse-xml": "^5.0.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.4",
     "astro": "^5.18.2",

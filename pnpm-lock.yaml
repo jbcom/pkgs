@@ -57,8 +57,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(nanostores@1.5.4)(vue@3.5.43(typescript@5.9.3))
       '@rgrove/parse-xml':
-        specifier: ^4.2.3
-        version: 4.2.3
+        specifier: ^5.0.0
+        version: 5.0.0
       '@tailwindcss/vite':
         specifier: ^4.3.3
         version: 4.3.3(vite@6.4.3(@types/node@26.6.4)(jiti@2.7.0)(lightningcss@1.32.0)(yaml@2.9.0))
@@ -939,9 +939,9 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@rgrove/parse-xml@4.2.3':
-    resolution: {integrity: sha512-Jhlb+0zYez1T1yXUQs3F1qAtFuJljBVNdy9TKmLDauAXkxsOXopKYOyQ5Wm6SvP3fycav0GviX4Y15WWhGetMw==}
-    engines: {node: '>=14.0.0'}
+  '@rgrove/parse-xml@5.0.0':
+    resolution: {integrity: sha512-SgHFyisNAkS2ZbM8SCriUm1N0bxLiz0POKvpDeAtrnLrXaYG1PawNwu1rSjmE/vcVHbZzYWNgVP6xkep6R4uXg==}
+    engines: {node: '>=22.12.0'}
 
   '@rolldown/pluginutils@1.0.0-rc.15':
     resolution: {integrity: sha512-UromN0peaE53IaBRe9W7CjrZgXl90fqGpK+mIZbA3qSTeYqg3pqpROBdIPvOG3F5ereDHNwoHBI2e50n1BDr1g==}
@@ -3942,7 +3942,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@rgrove/parse-xml@4.2.3': {}
+  '@rgrove/parse-xml@5.0.0': {}
 
   '@rolldown/pluginutils@1.0.0-rc.15': {}
 
