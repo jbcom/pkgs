@@ -22,3 +22,14 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Local agent configuration and runtime state (at any depth)
+.agent-state/
+.claude/
+.mcp.json
+opencode.json
+.augment/
+.agents/
+
+# Local package archives
+*.tgz
