@@ -28,10 +28,10 @@
     "@nanostores/vue": "^1.1.0",
     "@rgrove/parse-xml": "^4.2.3",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.6.4",
+    "@types/node": "^26.6.5",
     "astro": "^5.18.2",
     "astro-color-scheme": "^1.1.5",
-    "nanostores": "^1.5.4",
+    "nanostores": "^1.5.5",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.6.2",
@@ -39,17 +39,17 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@iconify-json/tabler": "^1.2.41",
+    "@iconify-json/tabler": "^1.2.42",
     "@tailwindcss/typography": "^0.5.20",
     "astro-icon": "^1.2.0",
     "vite-plugin-toml": "^0.9.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-darwin-arm64": "^4.63.6",
-    "@rollup/rollup-darwin-x64": "^4.63.6",
-    "@rollup/rollup-linux-arm64-gnu": "^4.63.6",
-    "@rollup/rollup-linux-x64-gnu": "^4.63.6",
-    "@rollup/rollup-win32-x64-msvc": "^4.63.6"
+    "@rollup/rollup-darwin-arm64": "^4.64.3",
+    "@rollup/rollup-darwin-x64": "^4.64.3",
+    "@rollup/rollup-linux-arm64-gnu": "^4.64.3",
+    "@rollup/rollup-linux-x64-gnu": "^4.64.3",
+    "@rollup/rollup-win32-x64-msvc": "^4.64.3"
   },
   "engines": {
     "node": ">=24",
